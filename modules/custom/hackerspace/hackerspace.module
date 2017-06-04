@@ -1,0 +1,57 @@
+<?php
+
+function hackerspace_views_pre_view(Drupal\webprofiler\Views\TraceableViewExecutable $view, $display_id, array &$args)
+  // replaces tokens like [node:id] in views with their value
+  // based on https://www.drupal.org/node/1699378#comment-11801999
+{
+  if ($view->display_handler->getType() === 'entity_reference') {
+    $calling_abs_path = \Drupal::request()->server->get('HTTP_REFERER');
+    $fake_request = \Symfony\Component\HttpFoundation\Request::create($calling_abs_path);
+    $url_object = \Drupal::service('path.validator')->getUrlIfValid($fake_request->getRequestUri());
+
+    if ($url_object) {
+      $params = $url_object->getRouteParameters();
+      $entity_type = key($params);
+      $entity = \Drupal::entityTypeManager()->getStorage($entity_type)->load($params[$entity_type]);
+
+      $token_service = \Drupal::token();
+      $options = array(
+        'clear' => TRUE,
+      );
+      $data = array($entity_type => $entity);
+      foreach ($args as $key => $arg) {
+        $args[$key] = $token_service->replace($arg, $data, $options);
+      }
+    }
+  }
+}
+function hackerspace_views_post_execute(Drupal\webprofiler\Views\TraceableViewExecutable $view)
+{
+  if ($view->current_display == 'prizes_choose') {
+    // $view->args[0] = event region/state
+    if (isset($view->args[0])) {
+      //$location = \Drupal\taxonomy\Entity\Term::load($view->args[0]);
+      $state = $view->args[0];
+      foreach ($view->result as $i => $result) {
+
+        $r = false;
+        // national and state prizes
+        if (empty($result->_entity->get('field_jurisdiction')->getValue())) { // national, no location
+          $r = true;
+        } else {
+          foreach ($result->_entity->get('field_jurisdiction')->getValue() as $loc) {
+            if ($loc['target_id'] == $state) { // state id matches
+              $r = true;
+            }
+          }
+        }
+
+        //
+        if (!$r) {
+          unset($view->result[$i]);
+        }
+      }
+    }
+  }
+}
+
