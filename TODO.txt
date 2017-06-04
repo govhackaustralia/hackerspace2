@@ -1,0 +1,5 @@
+Allow access to team members via verified email address https://www.quora.com/How-do-I-reference-a-user-to-allow-only-that-user-to-view-a-piece-of-content-in-Drupal-8
+Filter prizes by state https://www.drupal.org/node/1699378#comment-11801999
+Reporting of team members made easy!
+RDS database architecture or http://www.proxysql.com/ or https://dev.mysql.com/doc/refman/5.7/en/replication-howto-masterstatus.html 
+Backup ELB and EC2 PHP7+nginx instances
