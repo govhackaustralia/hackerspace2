@@ -6,7 +6,8 @@
     "require": {
         "composer/installers": "^1.0.24",
         "wikimedia/composer-merge-plugin": "~1.3",
-        "aws/aws-sdk-php": "^3.28"
+        "aws/aws-sdk-php": "^3.28",
+        "drupal/csv_serialization": "^1.0"
     },
     "replace": {
         "drupal/core": "~8.3"

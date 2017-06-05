@@ -1,5 +1,24 @@
 <?php
 
+function _update_prizes_callback($form, $form_state)
+{
+  return $form['field_prizes'];
+}
+
+function hackerspace_form_alter(&$form, \Drupal\Core\Form\FormStateInterface &$form_state, $form_id)
+{
+  if ($form_id == 'node_project_edit_form') {
+    $form['#attached']['library'][] = 'core/drupal.ajax';
+    $form['field_jurisdiction']['widget']['#ajax'] = [
+      'callback' => '_update_prizes_callback',
+      'wrapper' => 'prizes_wrapper',
+      'event' => 'change'
+    ];
+    $form['field_prizes']['#prefix'] = '<div id="prizes_wrapper">';
+    $form['field_prizes']['#suffix'] = '</div>';
+  }
+}
+
 function hackerspace_views_pre_view(Drupal\webprofiler\Views\TraceableViewExecutable $view, $display_id, array &$args)
   // replaces tokens like [node:id] in views with their value
   // based on https://www.drupal.org/node/1699378#comment-11801999
@@ -12,19 +31,28 @@ function hackerspace_views_pre_view(Drupal\webprofiler\Views\TraceableViewExecut
     if ($url_object) {
       $params = $url_object->getRouteParameters();
       $entity_type = key($params);
-      $entity = \Drupal::entityTypeManager()->getStorage($entity_type)->load($params[$entity_type]);
+      if ($entity_type) {
+        $entity = \Drupal::entityTypeManager()->getStorage($entity_type)->load($params[$entity_type]);
 
-      $token_service = \Drupal::token();
-      $options = array(
-        'clear' => TRUE,
-      );
-      $data = array($entity_type => $entity);
-      foreach ($args as $key => $arg) {
-        $args[$key] = $token_service->replace($arg, $data, $options);
+        $token_service = \Drupal::token();
+        $options = array(
+          'clear' => TRUE,
+        );
+        $data = array($entity_type => $entity);
+        foreach ($args as $key => $arg) {
+          # For AJAX requests, use the value from the request instead
+          $field = str_replace(['[node:', ']'], '', $arg);
+          if (!empty($field) && $value = $view->getRequest()->get($field)) {
+            $args[$key] = $value;
+          } else {
+            $args[$key] = $token_service->replace($arg, $data, $options);
+          }
+        }
       }
     }
   }
 }
+
 function hackerspace_views_post_execute(Drupal\webprofiler\Views\TraceableViewExecutable $view)
 {
   if ($view->current_display == 'prizes_choose') {

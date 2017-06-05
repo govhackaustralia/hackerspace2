@@ -1,9 +1,8 @@
 Allow access to team members via verified email address https://www.quora.com/How-do-I-reference-a-user-to-allow-only-that-user-to-view-a-piece-of-content-in-Drupal-8
 Block that displays projects you can edit (either owner or team member) displayed on login
-Filter prizes by state https://www.drupal.org/node/1699378#comment-11801999
- - AJAX https://www.urbaninsight.com/2016/08/21/how-implement-ajax-autosave-drupal-8-forms
- - http://enzolutions.com/articles/2014/11/25/how-to-work-with-drupal-8-forms-with-ajax/
- - D8 form alter and #ajax callback https://www.drupal.org/node/2756653
+
 Reporting of team members made easy!
+- Team ID = node id
+JSON API export, bulk private and single public
 RDS database architecture or http://www.proxysql.com/ or https://dev.mysql.com/doc/refman/5.7/en/replication-howto-masterstatus.html
 Backup ELB and EC2 PHP7+nginx instances
