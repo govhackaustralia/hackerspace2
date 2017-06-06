@@ -1,8 +1,14 @@
 Allow access to team members via verified email address https://www.quora.com/How-do-I-reference-a-user-to-allow-only-that-user-to-view-a-piece-of-content-in-Drupal-8
+- Adding a user that doesn't exist should invite them
+
 Block that displays projects you can edit (either owner or team member) displayed on login
+
+New users must accept code of conduct
 
 Reporting of team members made easy!
 - Team ID = node id
+
 JSON API export, bulk private and single public
+
 RDS database architecture or http://www.proxysql.com/ or https://dev.mysql.com/doc/refman/5.7/en/replication-howto-masterstatus.html
-Backup ELB and EC2 PHP7+nginx instances
+Development/Staging ELB and EC2 PHP7+nginx instances
