@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_jurisdiction
+    - node.type.project
+    - taxonomy.vocabulary.jurisdiction
+id: node.project.field_jurisdiction
+field_name: field_jurisdiction
+entity_type: node
+bundle: project
+label: State
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      jurisdiction: jurisdiction
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

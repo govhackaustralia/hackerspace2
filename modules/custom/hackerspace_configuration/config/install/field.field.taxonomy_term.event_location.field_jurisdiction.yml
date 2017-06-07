@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_jurisdiction
+    - taxonomy.vocabulary.event_location
+    - taxonomy.vocabulary.jurisdiction
+id: taxonomy_term.event_location.field_jurisdiction
+field_name: field_jurisdiction
+entity_type: taxonomy_term
+bundle: event_location
+label: State
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      jurisdiction: jurisdiction
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

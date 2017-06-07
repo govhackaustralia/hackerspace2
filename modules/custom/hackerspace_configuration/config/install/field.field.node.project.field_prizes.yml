@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_prizes
+    - node.type.project
+id: node.project.field_prizes
+field_name: field_prizes
+entity_type: node
+bundle: project
+label: Prizes
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: prizes_choice
+      display_name: prizes_choose
+      arguments:
+        - '[node:field_jurisdiction]'
+field_type: entity_reference

@@ -1,0 +1,73 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.project.body
+    - field.field.node.project.field_jurisdiction
+    - field.field.node.project.field_location
+    - field.field.node.project.field_prizes
+    - field.field.node.project.field_source_file
+    - field.field.node.project.field_sources
+    - field.field.node.project.field_team_members
+    - field.field.node.project.field_video
+    - field.field.node.project.field_video_file
+    - field.field.node.project.field_website
+    - node.type.project
+  module:
+    - link
+    - text
+    - user
+id: node.project.teaser
+targetEntityType: node
+bundle: project
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 4
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  field_jurisdiction:
+    type: entity_reference_label
+    weight: 1
+    region: content
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+  field_location:
+    type: entity_reference_label
+    weight: 2
+    region: content
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+  field_sources:
+    type: link
+    weight: 3
+    region: content
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_prizes: true
+  field_source_file: true
+  field_team_members: true
+  field_video: true
+  field_video_file: true
+  field_website: true

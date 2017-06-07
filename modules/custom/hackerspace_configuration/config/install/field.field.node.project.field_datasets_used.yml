@@ -1,0 +1,32 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_datasets_used
+    - node.type.project
+    - paragraphs.paragraphs_type.dataset_used
+  module:
+    - entity_reference_revisions
+id: node.project.field_datasets_used
+field_name: field_datasets_used
+entity_type: node
+bundle: project
+label: 'Datasets Used'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      dataset_used: dataset_used
+    target_bundles_drag_drop:
+      dataset_used:
+        enabled: true
+        weight: 3
+      team_member:
+        weight: 4
+        enabled: false
+field_type: entity_reference_revisions
