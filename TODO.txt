@@ -3,10 +3,9 @@ Allow access to team members via verified email address https://www.quora.com/Ho
 
 Block that displays projects you can edit (either owner or team member) displayed on login
 
-New users must accept code of conduct
-
 Reporting of team members made easy!
 - Team ID = node id
+- INCLUDE TEAM NAME, PROJECT NAME, PROJECT URL, STATE, EVENT LOCATION ETC.
 
 JSON API export, bulk private and single public
 
