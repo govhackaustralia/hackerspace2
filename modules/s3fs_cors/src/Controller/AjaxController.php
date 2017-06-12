@@ -96,7 +96,7 @@ class AjaxController extends ControllerBase {
       'uid' => $user->id(),
       'status' => 0,
       'filename' => $file_name,
-      'uri' => "s3fs://$directory/$file_name",
+      'uri' => "s3://$directory/$file_name",
       'filesize' => $file_size,
     );
     $values['filemime'] = \Drupal::service('file.mime_type.guesser')->guess($file_name);

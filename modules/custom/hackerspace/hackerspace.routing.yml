@@ -1,0 +1,6 @@
+hackerspace.team_export:
+  path: '/team_export'
+  defaults:
+    _controller: '\Drupal\hackerspace\Controller\HackerspaceController::team_export'
+  requirements:
+    _role: 'administrator'

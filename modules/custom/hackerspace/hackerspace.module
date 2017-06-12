@@ -1,11 +1,29 @@
 <?php
+/**
+ * Implements hook_node_access().
+ */
+function hackerspace_node_access($node, $op, $account) {
+
+  // if not my project, check if my email is in the team members of that project
+  if ($account->id() != $node->getOwnerId() && $node->getType() == 'project' && $op == 'update') {
+    $result = \Drupal::entityQuery('paragraph')
+      ->condition('type', 'team_member')
+      ->condition('field_email', $account->getEmail())
+      ->condition('parent_id', $node->id())
+      ->execute();
+     return Drupal\Core\Access\AccessResultAllowed::allowedIf(count($result) > 0);
+
+  }
+
+}
 
 function _update_prizes_callback($form, $form_state)
 {
   return $form['field_prizes'];
 }
-
 function hackerspace_form_alter(&$form, \Drupal\Core\Form\FormStateInterface &$form_state, $form_id)
+
+  // insert ajax magic into project edit form
 {
   if ($form_id == 'node_project_edit_form') {
     $form['#attached']['library'][] = 'core/drupal.ajax';
@@ -20,7 +38,7 @@ function hackerspace_form_alter(&$form, \Drupal\Core\Form\FormStateInterface &$f
 }
 
 function hackerspace_views_pre_view($view, $display_id, array &$args)
-  // replaces tokens like [node:id] in views with their value
+  // replaces tokens like [node:id] in views with their saved value or from the request
   // based on https://www.drupal.org/node/1699378#comment-11801999
 {
   if ($view->display_handler->getType() === 'entity_reference') {
@@ -82,4 +100,3 @@ function hackerspace_views_post_execute($view)
     }
   }
 }
-
