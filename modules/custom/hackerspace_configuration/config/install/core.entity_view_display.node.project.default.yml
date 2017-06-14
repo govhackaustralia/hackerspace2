@@ -14,6 +14,7 @@ dependencies:
     - field.field.node.project.field_video
     - field.field.node.project.field_video_file
     - field.field.node.project.field_website
+    - image.style.large
     - node.type.project
   module:
     - entity_reference_revisions
@@ -31,7 +32,7 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 4
+    weight: 5
     settings: {  }
     third_party_settings: {  }
     region: content
@@ -45,14 +46,6 @@ content:
     third_party_settings: {  }
     region: content
   field_jurisdiction:
-    weight: 1
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
-  field_location:
     weight: 2
     label: above
     settings:
@@ -60,7 +53,7 @@ content:
     third_party_settings: {  }
     type: entity_reference_label
     region: content
-  field_prizes:
+  field_location:
     weight: 3
     label: above
     settings:
@@ -68,24 +61,32 @@ content:
     third_party_settings: {  }
     type: entity_reference_label
     region: content
-  field_project_image:
-    weight: 10
+  field_prizes:
+    weight: 4
     label: above
     settings:
-      image_style: ''
-      image_link: ''
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_project_image:
+    weight: 1
+    label: visually_hidden
+    settings:
+      image_style: large
+      image_link: file
     third_party_settings: {  }
     type: image
     region: content
   field_source_file:
-    weight: 9
+    weight: 10
     label: above
     settings: {  }
     third_party_settings: {  }
     type: file_default
     region: content
   field_sources:
-    weight: 6
+    weight: 7
     label: above
     settings:
       trim_length: 80
@@ -97,25 +98,25 @@ content:
     type: link
     region: content
   field_video:
-    weight: 7
+    weight: 8
     label: above
     settings:
       responsive: true
       width: 854
       height: 480
-      autoplay: true
+      autoplay: false
     third_party_settings: {  }
     type: video_embed_field_video
     region: content
   field_video_file:
-    weight: 8
+    weight: 9
     label: above
     settings: {  }
     third_party_settings: {  }
     type: file_default
     region: content
   field_website:
-    weight: 5
+    weight: 6
     label: above
     settings:
       trim_length: 80

@@ -7,13 +7,36 @@ use Symfony\Component\HttpFoundation\Response;
 
 class HackerspaceController extends ControllerBase
 {
+  public function my_projects()
+  {
+    $projects = [];
 
+    $result = \Drupal::entityQuery('paragraph')
+      ->condition('type', 'team_member')
+      ->condition('field_email', \Drupal::currentUser()->getEmail())
+      ->execute();
+    foreach (\Drupal::entityManager()->getStorage('paragraph')->loadMultiple($result) as $tm) {
+      $projects[] = $tm->getParentEntity();
+    }
+    $result = \Drupal::entityQuery('node')
+      ->condition('type', 'project')
+      ->condition('uid', \Drupal::currentUser()->id())
+      ->execute();
+    foreach (\Drupal::entityManager()->getStorage('node')->loadMultiple($result) as $node) {
+      $projects[] = $node;
+    }
+    $markup = "<ul>";
+    foreach($projects as $project) {
+      $markup .= '<li><a href="'.$project->url().'">'.$project->title->value.'</a></li>';
+    }
+    $markup .= "</ul>";
+
+    return ['#markup'=> $markup ];
+  }
   public function team_export()
   {
     $response = new Response();
     $query = \Drupal::entityQuery('paragraph');
-
-
     $query->condition('type', 'team_member');
     $tms = [];
 

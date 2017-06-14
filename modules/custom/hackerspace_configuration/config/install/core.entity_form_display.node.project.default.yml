@@ -18,10 +18,9 @@ dependencies:
     - node.type.project
   module:
     - field_group
-    - file
-    - image
     - link
     - paragraphs
+    - s3fs_cors
     - text
     - video_embed_field
 third_party_settings:
@@ -88,14 +87,14 @@ content:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings: {  }
-    type: image_image
+    type: s3fs_cors_image_widget
     region: content
   field_source_file:
     weight: 11
     settings:
       progress_indicator: throbber
     third_party_settings: {  }
-    type: file_generic
+    type: s3fs_cors_file_widget
     region: content
   field_sources:
     weight: 12
@@ -128,7 +127,7 @@ content:
     settings:
       progress_indicator: throbber
     third_party_settings: {  }
-    type: file_generic
+    type: s3fs_cors_file_widget
     region: content
   field_website:
     weight: 8

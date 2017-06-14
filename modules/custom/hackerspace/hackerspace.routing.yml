@@ -4,3 +4,11 @@ hackerspace.team_export:
     _controller: '\Drupal\hackerspace\Controller\HackerspaceController::team_export'
   requirements:
     _role: 'administrator'
+
+hackerspace.my_projects:
+  path: '/my_projects'
+  defaults:
+    _controller: '\Drupal\hackerspace\Controller\HackerspaceController::my_projects'
+    _title: 'My Projects'
+  requirements:
+    _permission: 'access content'
