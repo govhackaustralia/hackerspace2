@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - ctools
+    - taxonomy
+id: event_path
+label: 'event path'
+type: 'canonical_entities:taxonomy_term'
+pattern: '/event/[term:name]'
+selection_criteria:
+  02ef9ab1-3896-4e1d-8f79-956b5796cc6f:
+    id: 'entity_bundle:taxonomy_term'
+    bundles:
+      event_location: event_location
+    negate: false
+    context_mapping:
+      taxonomy_term: taxonomy_term
+    uuid: 02ef9ab1-3896-4e1d-8f79-956b5796cc6f
+selection_logic: and
+weight: -5
+relationships: {  }

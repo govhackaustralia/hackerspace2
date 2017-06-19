@@ -1,0 +1,35 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.dataset_used.field_dataset_name
+    - field.field.paragraph.dataset_used.field_dataset_url
+    - paragraphs.paragraphs_type.dataset_used
+  module:
+    - link
+id: paragraph.dataset_used.default
+targetEntityType: paragraph
+bundle: dataset_used
+mode: default
+content:
+  field_dataset_name:
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_dataset_url:
+    weight: 1
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+hidden: {  }

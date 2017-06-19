@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - ctools
+    - taxonomy
+id: jurisd
+label: 'jurisdiction path'
+type: 'canonical_entities:taxonomy_term'
+pattern: '/jurisdiction/[term:name]'
+selection_criteria:
+  f4f9397e-eb75-4957-9c18-882426390a27:
+    id: 'entity_bundle:taxonomy_term'
+    bundles:
+      jurisdiction: jurisdiction
+    negate: false
+    context_mapping:
+      taxonomy_term: taxonomy_term
+    uuid: f4f9397e-eb75-4957-9c18-882426390a27
+selection_logic: and
+weight: -5
+relationships: {  }

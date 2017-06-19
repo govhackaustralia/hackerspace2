@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_dataset_name
+    - paragraphs.paragraphs_type.dataset_used
+id: paragraph.dataset_used.field_dataset_name
+field_name: field_dataset_name
+entity_type: paragraph
+bundle: dataset_used
+label: 'Dataset Name'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

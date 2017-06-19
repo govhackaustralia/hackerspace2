@@ -1,13 +1,18 @@
-Allow access to team members via verified email address https://www.quora.com/How-do-I-reference-a-user-to-allow-only-that-user-to-view-a-piece-of-content-in-Drupal-8
-- Adding a user that doesn't exist should invite them
+Make sure access control function still allows preventing editing after submission time.
 
-Block that displays projects you can edit (either owner or team member) displayed on login
+Project browser/filter/sort
+
+Adding a team member that doesn't exist should invite them by creating a user
+
+Organiser area with links to reports?
+- csv export for public projects + team member private project
 
 Reporting of team members made easy!
 - Team ID = node id
-- INCLUDE TEAM NAME, PROJECT NAME, PROJECT URL, STATE, EVENT LOCATION ETC.
+- INCLUDE PROJECT URL, STATE, EVENT LOCATION
 
-JSON API export, bulk private and single public
+JSON API export, bulk and single public
+Batch private csv export
 
 RDS database architecture or http://www.proxysql.com/ or https://dev.mysql.com/doc/refman/5.7/en/replication-howto-masterstatus.html
 Development/Staging ELB and EC2 PHP7+nginx instances

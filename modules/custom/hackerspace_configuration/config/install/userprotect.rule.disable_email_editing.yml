@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.authenticated
+  module:
+    - user
+name: disable_email_editing
+label: 'Disable Email Editing'
+protectedEntityTypeId: user_role
+protectedEntityId: authenticated
+protections:
+  user_mail:
+    id: user_mail
+    provider: userprotect
+    status: true

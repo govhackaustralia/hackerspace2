@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - ctools
+    - taxonomy
+id: prize_path
+label: 'prize path'
+type: 'canonical_entities:taxonomy_term'
+pattern: '/prize/[term:name]'
+selection_criteria:
+  a6e935cf-c3eb-430d-9101-a8341ae676e8:
+    id: 'entity_bundle:taxonomy_term'
+    bundles:
+      prize: prize
+    negate: false
+    context_mapping:
+      taxonomy_term: taxonomy_term
+    uuid: a6e935cf-c3eb-430d-9101-a8341ae676e8
+selection_logic: and
+weight: -5
+relationships: {  }

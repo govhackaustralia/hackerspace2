@@ -1,0 +1,50 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.team_member.field_captain
+    - field.field.paragraph.team_member.field_email
+    - field.field.paragraph.team_member.field_name
+    - field.field.paragraph.team_member.field_telephone
+    - paragraphs.paragraphs_type.team_member
+  module:
+    - telephone
+id: paragraph.team_member.default
+targetEntityType: paragraph
+bundle: team_member
+mode: default
+content:
+  field_captain:
+    weight: 3
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_email:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: email_default
+    region: content
+  field_name:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_telephone:
+    weight: 2
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: telephone_default
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true
