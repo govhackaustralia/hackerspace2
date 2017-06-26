@@ -8,11 +8,7 @@ Organiser area with links to reports?
 - csv export for public projects + team member private project
 
 Reporting of team members made easy!
-- Team ID = node id
 - INCLUDE PROJECT URL, STATE, EVENT LOCATION
 
 JSON API export, bulk and single public
 Batch private csv export
-
-RDS database architecture or http://www.proxysql.com/ or https://dev.mysql.com/doc/refman/5.7/en/replication-howto-masterstatus.html
-Development/Staging ELB and EC2 PHP7+nginx instances
