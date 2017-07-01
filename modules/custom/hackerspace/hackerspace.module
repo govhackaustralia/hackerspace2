@@ -3,9 +3,12 @@
  * Implements hook_node_access().
  */
 function hackerspace_node_access($node, $op, $account) {
-
+  $roleObj = \Drupal\user\Entity\Role::load('authenticated');
   // if not my project, check if my email is in the team members of that project
-  if ($account->id() != $node->getOwnerId() && $node->getType() == 'project' && $op == 'update') {
+  if ($account->id() != $node->getOwnerId()
+    && $node->getType() == 'project'
+    && $op == 'update'
+    && $roleObj->hasPermission("edit own project content")) {
     $result = \Drupal::entityQuery('paragraph')
       ->condition('type', 'team_member')
       ->condition('field_email', $account->getEmail())

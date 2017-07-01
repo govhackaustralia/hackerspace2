@@ -1,5 +1,3 @@
-Make sure access control function still allows preventing editing after submission time.
-
 Project browser/filter/sort
 
 Adding a team member that doesn't exist should invite them by creating a user
