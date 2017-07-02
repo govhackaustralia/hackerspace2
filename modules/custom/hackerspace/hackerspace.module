@@ -1,20 +1,59 @@
 <?php
+
+function _invite_teammember(Drupal\Core\Entity\EntityInterface $entity)
+{
+// if is type team member, create new user for email
+  if ($entity->getParagraphType()->id == 'team_member') {
+    $email =$entity->field_email->value;
+    $result = \Drupal::entityQuery('user')
+      ->condition('mail', $email)
+      ->execute();
+   if (count($result) == 0) {
+     $user = Drupal\user\Entity\User::create(array(
+       'name' => $email,
+       'mail' => $email
+     ));
+     $user->enforceIsNew();
+     $user->save();
+     _user_mail_notify('register_no_approval_required', $user);
+   }
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_insert().
+ */
+function hackerspace_paragraph_insert(Drupal\Core\Entity\EntityInterface $entity)
+{
+  _invite_teammember($entity);
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_update().
+ */
+function hackerspace_paragraph_update(Drupal\Core\Entity\EntityInterface $entity)
+{
+  _invite_teammember($entity);
+}
+
 /**
  * Implements hook_node_access().
  */
-function hackerspace_node_access($node, $op, $account) {
+function hackerspace_node_access($node, $op, $account)
+{
   $roleObj = \Drupal\user\Entity\Role::load('authenticated');
   // if not my project, check if my email is in the team members of that project
   if ($account->id() != $node->getOwnerId()
     && $node->getType() == 'project'
     && $op == 'update'
-    && $roleObj->hasPermission("edit own project content")) {
+    && $roleObj->hasPermission("edit own project content")
+  ) {
     $result = \Drupal::entityQuery('paragraph')
       ->condition('type', 'team_member')
       ->condition('field_email', $account->getEmail())
       ->condition('parent_id', $node->id())
       ->execute();
-     return Drupal\Core\Access\AccessResultAllowed::allowedIf(count($result) > 0);
+    return Drupal\Core\Access\AccessResultAllowed::allowedIf(count($result) > 0);
 
   }
 
@@ -24,6 +63,7 @@ function _update_prizes_callback($form, $form_state)
 {
   return $form['field_prizes'];
 }
+
 function hackerspace_form_alter(&$form, \Drupal\Core\Form\FormStateInterface &$form_state, $form_id)
 
   // insert ajax magic into project edit form
