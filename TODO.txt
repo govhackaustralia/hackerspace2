@@ -1,6 +1,8 @@
-Project browser/filter/sort
+Create project button in menu and my projects
 
-Adding a team member that doesn't exist should invite them by creating a user
+Update locations from lists
+
+Project browser/filter/sort
 
 Organiser area with links to reports?
 - csv export for public projects + team member private project

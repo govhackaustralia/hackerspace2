@@ -4,19 +4,19 @@ function _invite_teammember(Drupal\Core\Entity\EntityInterface $entity)
 {
 // if is type team member, create new user for email
   if ($entity->getParagraphType()->id == 'team_member') {
-    $email =$entity->field_email->value;
+    $email = $entity->field_email->value;
     $result = \Drupal::entityQuery('user')
       ->condition('mail', $email)
       ->execute();
-   if (count($result) == 0) {
-     $user = Drupal\user\Entity\User::create(array(
-       'name' => $email,
-       'mail' => $email
-     ));
-     $user->enforceIsNew();
-     $user->save();
-     _user_mail_notify('register_no_approval_required', $user);
-   }
+    if (count($result) == 0) {
+      $user = Drupal\user\Entity\User::create(array(
+        'name' => $email,
+        'mail' => $email
+      ));
+      $user->enforceIsNew();
+      $user->save();
+      _user_mail_notify('register_no_approval_required', $user);
+    }
   }
 }
 
@@ -77,6 +77,10 @@ function hackerspace_form_alter(&$form, \Drupal\Core\Form\FormStateInterface &$f
     ];
     $form['field_prizes']['#prefix'] = '<div id="prizes_wrapper">';
     $form['field_prizes']['#suffix'] = '</div>';
+  }
+
+  if ($form_id == 'node_project_edit_form' || $form_id == 'user_login_form' || $form_id == 'user_pass') {
+    $form['#attached']['library'][] = 'hackerspace/hackerspace_theme';
   }
 }
 
