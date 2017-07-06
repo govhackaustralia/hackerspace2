@@ -25,11 +25,11 @@ class HackerspaceController extends ControllerBase
     foreach (\Drupal::entityManager()->getStorage('node')->loadMultiple($result) as $node) {
       $projects[] = $node;
     }
-    $markup = "<ul>";
+    $markup = '<a class="btn btn-info" href="/node/add/project">Create new project...</a><ul>';
     foreach($projects as $project) {
       $markup .= '<li><a href="'.$project->url().'">'.$project->title->value.'</a></li>';
     }
-    $markup .= "</ul>";
+    $markup .= '</ul>';
 
     return ['#markup'=> $markup ];
   }

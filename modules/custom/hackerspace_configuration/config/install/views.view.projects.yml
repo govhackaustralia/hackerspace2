@@ -437,6 +437,7 @@ display:
         type: normal
         title: Projects
         menu_name: main
+        weight: -49
     cache_metadata:
       max-age: 0
       contexts:

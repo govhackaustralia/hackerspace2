@@ -15,6 +15,7 @@ dependencies:
   - path
   - pathauto
   - s3fs_cors
+  - system
   - taxonomy
   - telephone
   - text
