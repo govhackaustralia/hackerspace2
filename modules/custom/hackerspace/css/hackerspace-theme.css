@@ -4,20 +4,20 @@
 .form-type-vertical-tabs {
   display: none;
 }
-#edit-field-jurisdiction--wrapper .form-item {
-  width: 100px;
+#edit-field-jurisdiction--wrapper .form-item, #edit-field-location--wrapper .form-item {
+  width: 135px;
   display: inline-block;
 }
-#edit-field-jurisdiction--wrapper .field-suffix {
+#edit-field-jurisdiction--wrapper .field-suffix, #edit-field-location--wrapper .field-suffix {
   display: none;
 }
-#edit-field-jurisdiction--wrapper .input-group {
+#edit-field-jurisdiction--wrapper .input-group, #edit-field-location--wrapper .input-group {
   margin-bottom: -15px;
 }
-#edit-field-jurisdiction--wrapper .input-group-addon {
+#edit-field-jurisdiction--wrapper .input-group-addon, #edit-field-location--wrapper .input-group-addon {
   border: 0;
   background-color: transparent;
   display: inline;
-  left: 40px;
+  left: 70px;
   position: relative;
 }
