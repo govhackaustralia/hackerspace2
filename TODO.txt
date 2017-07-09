@@ -1,7 +1,3 @@
-Create project button in menu and my projects
-
-Update locations from lists
-
 Project browser/filter/sort
 
 Organiser area with links to reports?
