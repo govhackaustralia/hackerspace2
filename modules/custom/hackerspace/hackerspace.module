@@ -147,3 +147,30 @@ function hackerspace_views_post_execute($view)
     }
   }
 }
+
+function hackerspace_page_attachments(array &$page)
+{
+
+  $page['#attached']['html_head'][] = [
+    // The data.
+    [
+      // The HTML tag to add, in this case a <script> tag.
+      '#tag' => 'script',
+      '#attributes' => array(
+        'language' => "javascript",
+        'type' => "text/javascript",
+      ),
+      '#value' => "var _prum = [['id', '5790b0a3abe53dd423d56a72'],
+             ['mark', 'firstbyte', (new Date()).getTime()]];
+              (function() {
+                  var s = document.getElementsByTagName('script')[0]
+                    , p = document.createElement('script');
+                  p.async = 'async';
+                  p.src = '//rum-static.pingdom.net/prum.min.js';
+                  s.parentNode.insertBefore(p, s);
+              })();",
+    ],
+    // A key, to make it possible to recognize this HTML <HEAD> element when altering.
+    'pingdom-rum'
+  ];
+}

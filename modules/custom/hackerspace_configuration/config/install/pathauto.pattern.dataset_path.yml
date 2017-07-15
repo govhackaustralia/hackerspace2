@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - ctools
+    - taxonomy
+id: dataset_path
+label: 'dataset path'
+type: 'canonical_entities:taxonomy_term'
+pattern: '/dataset/[term:name]'
+selection_criteria:
+  3e6619f2-791e-4322-9825-7f07e7e5bada:
+    id: 'entity_bundle:taxonomy_term'
+    bundles:
+      dataset: dataset
+    negate: false
+    context_mapping:
+      taxonomy_term: taxonomy_term
+    uuid: 3e6619f2-791e-4322-9825-7f07e7e5bada
+selection_logic: and
+weight: -5
+relationships: {  }

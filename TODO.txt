@@ -1,3 +1,5 @@
+Link out each prize to their page
+
 Project browser/filter/sort
 
 Organiser area with links to reports?
@@ -8,3 +10,5 @@ Reporting of team members made easy!
 
 JSON API export, bulk and single public
 Batch private csv export
+
+Filter event locations by state
