@@ -21,3 +21,11 @@
   left: 70px;
   position: relative;
 }
+
+#node-project-edit-form .field-multiple-drag, #node-project-edit-form .tabledrag-toggle-weight-wrapper {
+  display: none;
+}
+
+#node-project-edit-form .paragraph-type-title {
+  font-size: 0;
+}

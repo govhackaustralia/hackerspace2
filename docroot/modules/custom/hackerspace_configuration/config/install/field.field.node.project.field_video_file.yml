@@ -11,7 +11,7 @@ field_name: field_video_file
 entity_type: node
 bundle: project
 label: 'Video File'
-description: ''
+description: 'Alternatively, you can upload a video file to the Hackerspace.'
 required: false
 translatable: false
 default_value: {  }

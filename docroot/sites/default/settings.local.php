@@ -18,3 +18,12 @@ if (isset($_SERVER['RDS_HOSTNAME'])) {
 if (file_exists('/var/www/site-php')) {
   require '/var/www/site-php/ausgovhack/ausgovhack-settings.inc';
 }
+$settings['hash_salt'] = 'CHANGE_THIS';
+$databases['default']['default'] = array(
+  'database' => 'hackerspace2',
+  'username' => 'root',
+  'prefix' => '',
+  'host' => 'localhost',
+  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
+  'driver' => 'mysql',
+);

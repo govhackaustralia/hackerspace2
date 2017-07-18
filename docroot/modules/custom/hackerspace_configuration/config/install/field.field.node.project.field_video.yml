@@ -11,7 +11,7 @@ field_name: field_video
 entity_type: node
 bundle: project
 label: 'Video URL (YouTube/Vimeo)'
-description: ''
+description: "Required - A link to a three minute pre-recorded video about your project including the project team, the data used and a demonstration of the outcomes. For more tips, refer to the <a href=\"https://govhack.org/handbook/competition/prepare-your-video/\">GovHack Handbook \"Prepare your Video\" guide.</a> \r\nWe suggest using Youtube or Vimeo as you get the URL as soon as you start uploading."
 required: false
 translatable: false
 default_value: {  }

@@ -10,7 +10,7 @@ id: taxonomy_term.prize.field_prize_sponsor
 field_name: field_prize_sponsor
 entity_type: taxonomy_term
 bundle: prize
-label: 'Prize Sponsor'
+label: 'Award Sponsor'
 description: ''
 required: false
 translatable: false

@@ -5,18 +5,18 @@ dependencies:
     - ctools
     - taxonomy
 id: prize_path
-label: 'prize path'
+label: 'award path'
 type: 'canonical_entities:taxonomy_term'
-pattern: '/prize/[term:name]'
+pattern: '/award/[term:name]'
 selection_criteria:
-  a6e935cf-c3eb-430d-9101-a8341ae676e8:
+  b07c5ad3-31b9-4a51-b20b-594596d3dff8:
     id: 'entity_bundle:taxonomy_term'
     bundles:
       prize: prize
     negate: false
     context_mapping:
       taxonomy_term: taxonomy_term
-    uuid: a6e935cf-c3eb-430d-9101-a8341ae676e8
+    uuid: b07c5ad3-31b9-4a51-b20b-594596d3dff8
 selection_logic: and
 weight: -5
 relationships: {  }

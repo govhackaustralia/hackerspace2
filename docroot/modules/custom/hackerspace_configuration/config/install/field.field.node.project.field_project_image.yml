@@ -11,7 +11,7 @@ field_name: field_project_image
 entity_type: node
 bundle: project
 label: 'Project Image'
-description: ''
+description: 'Upload an image that best shows off your project. '
 required: false
 translatable: false
 default_value: {  }
@@ -19,10 +19,10 @@ default_value_callback: ''
 settings:
   file_directory: '[date:custom:Y]-[date:custom:m]'
   file_extensions: 'png gif jpg jpeg'
-  max_filesize: ''
-  max_resolution: ''
+  max_filesize: 5MB
+  max_resolution: 500x500
   min_resolution: ''
-  alt_field: true
+  alt_field: false
   alt_field_required: false
   title_field: false
   title_field_required: false

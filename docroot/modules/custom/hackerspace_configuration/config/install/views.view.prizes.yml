@@ -240,7 +240,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Prize Sponsor'
+          label: 'Award Sponsor'
           exclude: false
           alter:
             alter_text: false
@@ -369,7 +369,7 @@ display:
           entity_field: vid
           plugin_id: bundle
       sorts: {  }
-      title: Prizes
+      title: Awards
       header: {  }
       footer: {  }
       empty: {  }
@@ -394,7 +394,7 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
-      path: prizes
+      path: awards
     cache_metadata:
       max-age: 0
       contexts:

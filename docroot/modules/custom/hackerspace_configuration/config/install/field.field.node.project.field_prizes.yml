@@ -8,7 +8,7 @@ id: node.project.field_prizes
 field_name: field_prizes
 entity_type: node
 bundle: project
-label: Prizes
+label: Awards
 description: ''
 required: false
 translatable: false

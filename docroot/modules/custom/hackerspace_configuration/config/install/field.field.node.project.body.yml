@@ -10,12 +10,12 @@ id: node.project.body
 field_name: body
 entity_type: node
 bundle: project
-label: 'Project Description'
-description: ''
+label: 'Project Description and Data Story'
+description: 'Tell us about your project - why did you choose to build it, what does it do, who is it for, et cetera. Also talk about the data you''ve reused, and how you''ve reused it. How does the project satisfy the prize categories you have selected?'
 required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
-  display_summary: true
+  display_summary: false
 field_type: text_with_summary

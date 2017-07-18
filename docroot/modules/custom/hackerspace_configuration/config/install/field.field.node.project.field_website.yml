@@ -10,13 +10,13 @@ id: node.project.field_website
 field_name: field_website
 entity_type: node
 bundle: project
-label: Website
-description: ''
+label: 'Project Website/Demo'
+description: 'Optionally, provide the URL of the homepage where people can go to find more information about your project or view a demo.'
 required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
   link_type: 16
-  title: 1
+  title: 0
 field_type: link

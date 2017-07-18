@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.project.field_source_file
     - field.field.node.project.field_sources
     - field.field.node.project.field_team_members
+    - field.field.node.project.field_team_name
     - field.field.node.project.field_video
     - field.field.node.project.field_video_file
     - field.field.node.project.field_website
@@ -27,9 +28,10 @@ third_party_settings:
   field_group:
     group_team_information:
       children:
+        - field_team_name
         - field_team_members
       parent_name: ''
-      weight: 5
+      weight: 4
       format_type: fieldset
       format_settings:
         id: ''
@@ -37,6 +39,87 @@ third_party_settings:
         description: ''
         required_fields: true
       label: 'Team Information'
+    group_project_details:
+      children:
+        - title
+        - field_project_image
+        - body
+      parent_name: ''
+      weight: 0
+      format_type: fieldset
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: true
+      label: 'Project Details'
+    group_competition_details:
+      children:
+        - field_jurisdiction
+        - field_location
+        - field_prizes
+      parent_name: ''
+      weight: 6
+      format_type: fieldset
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: true
+      label: 'Competition Details'
+    group_data_used:
+      children:
+        - field_datasets_used
+      parent_name: ''
+      weight: 7
+      format_type: fieldset
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: true
+      label: 'Data Used'
+    group_project_repository_demos_a:
+      children:
+        - field_website
+        - group_link_to_or_upload_source_m
+        - group_link_to_or_
+      parent_name: ''
+      weight: 8
+      format_type: fieldset
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: true
+      label: 'Project Repository, Demos and Videos'
+    group_link_to_or_:
+      children:
+        - field_video
+        - field_video_file
+      parent_name: group_project_repository_demos_a
+      weight: 13
+      format_type: fieldset
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: true
+      label: 'Link to or Upload a Video'
+    group_link_to_or_upload_source_m:
+      children:
+        - field_sources
+        - field_source_file
+      parent_name: group_project_repository_demos_a
+      weight: 10
+      format_type: fieldset
+      format_settings:
+        label: 'Link to or Upload Source Material'
+        description: 'To be eligible for awards your repository must demonstrate that the majority of the work on your project was undertaken during the competition (excepting publicly available third party libraries, etc.). e.g a google folder with storyboard, photos, diagrams, models, plans etc or source code repository such as GitHub.'
+        required_fields: true
+        id: ''
+        classes: ''
+      label: 'Link to or Upload Source Material'
 id: node.project.default
 targetEntityType: node
 bundle: project
@@ -44,7 +127,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 2
+    weight: 3
     settings:
       rows: 9
       summary_rows: 3
@@ -53,14 +136,14 @@ content:
     region: content
   field_datasets_used:
     type: entity_reference_paragraphs
-    weight: 7
+    weight: 8
     settings:
-      title: Paragraph
-      title_plural: Paragraphs
+      title: Dataset
+      title_plural: Datasets
       edit_mode: open
       add_mode: dropdown
       form_display_mode: default
-      default_paragraph_type: ''
+      default_paragraph_type: dataset_used
     third_party_settings: {  }
     region: content
   field_jurisdiction:
@@ -76,13 +159,13 @@ content:
     type: options_buttons
     region: content
   field_prizes:
-    weight: 6
+    weight: 5
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
     region: content
   field_project_image:
-    weight: 1
+    weight: 2
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
@@ -90,14 +173,14 @@ content:
     type: s3fs_cors_image_widget
     region: content
   field_source_file:
-    weight: 11
+    weight: 12
     settings:
       progress_indicator: throbber
     third_party_settings: {  }
     type: s3fs_cors_file_widget
     region: content
   field_sources:
-    weight: 12
+    weight: 11
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -106,31 +189,39 @@ content:
     region: content
   field_team_members:
     type: entity_reference_paragraphs
-    weight: 5
+    weight: 8
     settings:
-      title: Paragraph
-      title_plural: Paragraphs
+      title: 'Team Member'
+      title_plural: 'Team Members'
       edit_mode: open
       add_mode: dropdown
       form_display_mode: default
-      default_paragraph_type: ''
+      default_paragraph_type: team_member
     third_party_settings: {  }
     region: content
+  field_team_name:
+    weight: 7
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
   field_video:
-    weight: 9
+    weight: 10
     settings: {  }
     third_party_settings: {  }
     type: video_embed_field_textfield
     region: content
   field_video_file:
-    weight: 10
+    weight: 11
     settings:
       progress_indicator: throbber
     third_party_settings: {  }
     type: s3fs_cors_file_widget
     region: content
   field_website:
-    weight: 8
+    weight: 9
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -139,7 +230,7 @@ content:
     region: content
   title:
     type: string_textfield
-    weight: 0
+    weight: 1
     region: content
     settings:
       size: 60
