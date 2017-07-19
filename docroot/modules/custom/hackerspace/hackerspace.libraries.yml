@@ -3,3 +3,7 @@ hackerspace_theme:
   css:
     base:
       css/hackerspace-theme.css: {}
+  js:
+    js/hackerspace-js.js: {}
+  dependencies:
+    - core/jquery
