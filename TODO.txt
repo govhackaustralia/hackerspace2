@@ -1,9 +1,4 @@
-
-Blazmeter test 500 people 200/req minute
-- jmeter for login, register, project
-- turn off email validation and stub out smtp?
-
 HA
 - Use aurora xlarge
-- Add replica and configure all instances to use 'replica' target
 - Scaling, t2.mediums/c4.larges with enhanced networking
+- turn on memcache!

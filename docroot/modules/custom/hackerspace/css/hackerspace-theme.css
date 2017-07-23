@@ -22,7 +22,8 @@
   position: relative;
 }
 
-#node-project-edit-form .field-multiple-drag, #node-project-edit-form .tabledrag-toggle-weight-wrapper {
+#node-project-edit-form .field-multiple-drag, #node-project-edit-form .tabledrag-toggle-weight-wrapper,
+.tabledrag-toggle-weight {
   display: none;
 }
 
