@@ -47,7 +47,7 @@ display:
         options:
           disable_sql_rewrite: false
           distinct: false
-          replica: false
+          replica: true
           query_comment: ''
           query_tags: {  }
       exposed_form:

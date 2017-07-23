@@ -2,6 +2,7 @@ name: 'Hackerspace Configuration'
 type: module
 core: 8.x
 dependencies:
+  - csv_serialization
   - ctools
   - entity_reference_revisions
   - field
@@ -14,7 +15,9 @@ dependencies:
   - paragraphs
   - path
   - pathauto
+  - rest
   - s3fs_cors
+  - serialization
   - system
   - taxonomy
   - telephone
@@ -24,3 +27,4 @@ dependencies:
   - userprotect
   - video_embed_field
   - views
+  - views_data_export

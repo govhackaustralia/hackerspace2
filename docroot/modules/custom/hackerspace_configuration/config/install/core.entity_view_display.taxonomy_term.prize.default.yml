@@ -2,6 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.taxonomy_term.prize.field_code
     - field.field.taxonomy_term.prize.field_description
     - field.field.taxonomy_term.prize.field_eligibility_criteria
     - field.field.taxonomy_term.prize.field_jurisdiction
@@ -50,4 +51,5 @@ content:
     third_party_settings: {  }
     type: text_default
     region: content
-hidden: {  }
+hidden:
+  field_code: true

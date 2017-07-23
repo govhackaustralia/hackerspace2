@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_further_opportunities
+    - node.type.project
+id: node.project.field_further_opportunities
+field_name: field_further_opportunities
+entity_type: node
+bundle: project
+label: 'Further Opportunities'
+description: 'Would you like to be contacted for further opportunities to work on your project from government and sponsors? '
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

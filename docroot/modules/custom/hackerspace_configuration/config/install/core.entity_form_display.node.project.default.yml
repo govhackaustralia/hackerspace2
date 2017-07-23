@@ -4,6 +4,7 @@ dependencies:
   config:
     - field.field.node.project.body
     - field.field.node.project.field_datasets_used
+    - field.field.node.project.field_further_opportunities
     - field.field.node.project.field_jurisdiction
     - field.field.node.project.field_location
     - field.field.node.project.field_prizes
@@ -29,6 +30,7 @@ third_party_settings:
     group_team_information:
       children:
         - field_team_name
+        - field_further_opportunities
         - field_team_members
       parent_name: ''
       weight: 4
@@ -98,7 +100,7 @@ third_party_settings:
         - field_video
         - field_video_file
       parent_name: group_project_repository_demos_a
-      weight: 13
+      weight: 12
       format_type: fieldset
       format_settings:
         id: ''
@@ -146,6 +148,13 @@ content:
       default_paragraph_type: dataset_used
     third_party_settings: {  }
     region: content
+  field_further_opportunities:
+    weight: 8
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
   field_jurisdiction:
     weight: 3
     settings: {  }
@@ -153,13 +162,13 @@ content:
     type: options_buttons
     region: content
   field_location:
-    weight: 4
+    weight: 5
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
     region: content
   field_prizes:
-    weight: 5
+    weight: 6
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
@@ -173,14 +182,14 @@ content:
     type: s3fs_cors_image_widget
     region: content
   field_source_file:
-    weight: 12
+    weight: 13
     settings:
       progress_indicator: throbber
     third_party_settings: {  }
     type: s3fs_cors_file_widget
     region: content
   field_sources:
-    weight: 11
+    weight: 12
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -189,7 +198,7 @@ content:
     region: content
   field_team_members:
     type: entity_reference_paragraphs
-    weight: 8
+    weight: 9
     settings:
       title: 'Team Member'
       title_plural: 'Team Members'
