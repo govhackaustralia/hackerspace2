@@ -27,3 +27,4 @@ $databases['default']['default'] = array(
   'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
   'driver' => 'mysql',
 );
+$config_directories['sync'] = '/tmp';

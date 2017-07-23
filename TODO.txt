@@ -1,4 +1,7 @@
+make 2017.* live in maintenance mode
+forward on maxious.* for ahckerspace
+
 HA
 - Use aurora xlarge
 - Scaling, t2.mediums/c4.larges with enhanced networking
-- turn on memcache!
+- turn on memcache and aggregated js/css
