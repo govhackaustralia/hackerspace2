@@ -568,7 +568,7 @@ display:
           empty: false
           tokenize: false
           content:
-            value: ''
+            value: '<small class="pull-right">also available in <a href="/projects.csv">csv</a> and <a href="/projects.json">json</a></small>'
             format: full_html
           plugin_id: text
       footer: {  }

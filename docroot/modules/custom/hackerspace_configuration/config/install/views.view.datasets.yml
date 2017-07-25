@@ -3,13 +3,11 @@ status: true
 dependencies:
   config:
     - field.storage.taxonomy_term.field_dataset_url
-    - field.storage.taxonomy_term.field_description
     - field.storage.taxonomy_term.field_jurisdiction
     - taxonomy.vocabulary.dataset
   module:
     - link
     - taxonomy
-    - text
     - user
 id: datasets
 label: Datasets
@@ -327,7 +325,6 @@ display:
         - user.permissions
       tags:
         - 'config:field.storage.taxonomy_term.field_dataset_url'
-        - 'config:field.storage.taxonomy_term.field_description'
         - 'config:field.storage.taxonomy_term.field_jurisdiction'
   page_1:
     display_plugin: page
@@ -345,5 +342,4 @@ display:
         - user.permissions
       tags:
         - 'config:field.storage.taxonomy_term.field_dataset_url'
-        - 'config:field.storage.taxonomy_term.field_description'
         - 'config:field.storage.taxonomy_term.field_jurisdiction'
