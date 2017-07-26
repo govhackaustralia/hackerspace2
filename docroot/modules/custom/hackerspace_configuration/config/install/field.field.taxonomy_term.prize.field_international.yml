@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_international
+    - taxonomy.vocabulary.prize
+id: taxonomy_term.prize.field_international
+field_name: field_international
+entity_type: taxonomy_term
+bundle: prize
+label: International
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean
