@@ -1,3 +1,8 @@
+NZ
+- should see only NZ and international prizes
+
+
+
  HA
 - Use aurora xlarge
 - Scaling, t2.mediums/c4.larges with enhanced networking

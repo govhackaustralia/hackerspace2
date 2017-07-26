@@ -4,6 +4,7 @@ dependencies:
   config:
     - field.field.taxonomy_term.prize.field_code
     - field.field.taxonomy_term.prize.field_eligibility_criteria
+    - field.field.taxonomy_term.prize.field_international
     - field.field.taxonomy_term.prize.field_jurisdiction
     - field.field.taxonomy_term.prize.field_prize_sponsor
     - taxonomy.vocabulary.prize
@@ -46,6 +47,16 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: text_default
+    region: content
+  field_international:
+    weight: 5
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
     region: content
   field_jurisdiction:
     weight: 2

@@ -123,17 +123,21 @@ function hackerspace_views_post_execute($view)
   if ($view->current_display == 'prizes_choose') {
     // $view->args[0] = event region/state
     if (isset($view->args[0])) {
-      //$location = \Drupal\taxonomy\Entity\Term::load($view->args[0]);
-      $state = $view->args[0];
+
+      $jurisdiction_id = $view->args[0];
+      $jurisdiction = \Drupal\taxonomy\Entity\Term::load($view->args[0]);
       foreach ($view->result as $i => $result) {
 
         $r = false;
-        // national and state prizes
-        if (empty($result->_entity->get('field_jurisdiction')->getValue())) { // national, no location
-          $r = true;
+        // national and jurisdiction prizes
+        if (empty($result->_entity->get('field_jurisdiction')->getValue())) { // national or international, no location
+          if ($jurisdiction->get('name')->getValue()[0]['value'] != 'New Zealand' ||
+            $result->_entity->get('field_international')->getValue()[0]['value'] == '1') {
+            $r = true;
+          }
         } else {
           foreach ($result->_entity->get('field_jurisdiction')->getValue() as $loc) {
-            if ($loc['target_id'] == $state) { // state id matches
+            if ($loc['target_id'] == $jurisdiction_id) { // jurisdiction id matches
               $r = true;
             }
           }

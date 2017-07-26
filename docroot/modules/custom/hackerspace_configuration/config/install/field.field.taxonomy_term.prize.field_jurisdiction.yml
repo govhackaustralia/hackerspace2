@@ -9,7 +9,7 @@ id: taxonomy_term.prize.field_jurisdiction
 field_name: field_jurisdiction
 entity_type: taxonomy_term
 bundle: prize
-label: State
+label: State/Territory/Country
 description: ''
 required: false
 translatable: true
