@@ -2,6 +2,7 @@ name: 'Hackerspace Configuration'
 type: module
 core: 8.x
 dependencies:
+  - block
   - csv_serialization
   - ctools
   - entity_reference_revisions

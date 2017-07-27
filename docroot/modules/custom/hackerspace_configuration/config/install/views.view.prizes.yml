@@ -1358,7 +1358,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: State
+          label: 'Award Region (State/Territory/National/International)'
           exclude: false
           alter:
             alter_text: false
