@@ -132,7 +132,7 @@ function hackerspace_views_post_execute($view)
         $r = false;
         // national and jurisdiction prizes
         if (empty($result->_entity->get('field_jurisdiction')->getValue())) { // national or international, no location
-          if (!empty($jurisdiction) && $jurisdiction->get('name')->getValue()[0]['value'] != 'New Zealand' ||
+          if ((!empty($jurisdiction) && $jurisdiction->get('name')->getValue()[0]['value'] != 'New Zealand') ||
             $result->_entity->get('field_international')->getValue()[0]['value'] == '1') {
             $r = true;
           }

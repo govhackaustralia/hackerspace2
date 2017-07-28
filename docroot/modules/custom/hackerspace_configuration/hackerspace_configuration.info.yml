@@ -24,7 +24,6 @@ dependencies:
   - telephone
   - text
   - user
-  - user_default_page
   - userprotect
   - video_embed_field
   - views
