@@ -12,3 +12,5 @@ hackerspace.my_projects:
     _title: 'My Projects'
   requirements:
     _permission: 'access content'
+  options:
+    no_cache: TRUE
