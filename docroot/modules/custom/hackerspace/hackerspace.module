@@ -124,7 +124,8 @@ function hackerspace_views_pre_view($view, $display_id, array &$args)
     if (!$changed) {
       foreach ($args as $key => $arg) {
         $field = str_replace(['[node:', ']'], '', $arg);
-        if (!empty($field) && $value = \Drupal::request()->attributes->get('node')->get($field)->getValue()) {
+        if (!empty($field) && \Drupal::request()->attributes->get('node')
+          && $value = \Drupal::request()->attributes->get('node')->get($field)->getValue()) {
           $args[$key] = $value[0]['target_id'];
         }
       }
