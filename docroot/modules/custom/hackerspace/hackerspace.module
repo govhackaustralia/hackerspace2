@@ -68,7 +68,7 @@ function hackerspace_form_alter(&$form, \Drupal\Core\Form\FormStateInterface &$f
 
   // insert ajax magic into project edit form
 {
-  if ($form_id == 'node_project_edit_form') {
+  if ($form_id == 'node_project_edit_form' || $form_id == 'node_project_form') {
     $form['#attached']['library'][] = 'core/drupal.ajax';
     $form['field_jurisdiction']['widget']['#ajax'] = [
       'callback' => '_update_prizes_callback',
@@ -79,7 +79,8 @@ function hackerspace_form_alter(&$form, \Drupal\Core\Form\FormStateInterface &$f
     $form['field_prizes']['#suffix'] = '</div>';
   }
 
-  if ($form_id == 'node_project_edit_form' || $form_id == 'user_login_form' || $form_id == 'user_pass') {
+  if ($form_id == 'node_project_edit_form' || $form_id == 'node_project_form'
+    || $form_id == 'user_login_form' || $form_id == 'user_pass') {
     $form['#attached']['library'][] = 'hackerspace/hackerspace_theme';
   }
 }
@@ -131,7 +132,7 @@ function hackerspace_views_post_execute($view)
         $r = false;
         // national and jurisdiction prizes
         if (empty($result->_entity->get('field_jurisdiction')->getValue())) { // national or international, no location
-          if ($jurisdiction->get('name')->getValue()[0]['value'] != 'New Zealand' ||
+          if (!empty($jurisdiction) && $jurisdiction->get('name')->getValue()[0]['value'] != 'New Zealand' ||
             $result->_entity->get('field_international')->getValue()[0]['value'] == '1') {
             $r = true;
           }
