@@ -90,11 +90,13 @@ function hackerspace_views_pre_view($view, $display_id, array &$args)
   // based on https://www.drupal.org/node/1699378#comment-11801999
 {
   if ($view->display_handler->getType() === 'entity_reference') {
+
+    $changed = false;
     $calling_abs_path = \Drupal::request()->server->get('HTTP_REFERER');
     $fake_request = \Symfony\Component\HttpFoundation\Request::create($calling_abs_path);
     $url_object = \Drupal::service('path.validator')->getUrlIfValid($fake_request->getRequestUri());
 
-    if ($url_object) {
+    if ($calling_abs_path && $url_object) {
       $params = $url_object->getRouteParameters();
       $entity_type = key($params);
       if ($entity_type) {
@@ -110,9 +112,20 @@ function hackerspace_views_pre_view($view, $display_id, array &$args)
           $field = str_replace(['[node:', ']'], '', $arg);
           if (!empty($field) && $value = $view->getRequest()->get($field)) {
             $args[$key] = $value;
+            $changed = true;
           } else {
             $args[$key] = $token_service->replace($arg, $data, $options);
+            $changed = true;
           }
+        }
+      }
+    }
+    # fall back to saved node if not ajax/referer
+    if (!$changed) {
+      foreach ($args as $key => $arg) {
+        $field = str_replace(['[node:', ']'], '', $arg);
+        if (!empty($field) && $value = \Drupal::request()->attributes->get('node')->get($field)->getValue()) {
+          $args[$key] = $value[0]['target_id'];
         }
       }
     }
@@ -132,8 +145,10 @@ function hackerspace_views_post_execute($view)
         $r = false;
         // national and jurisdiction prizes
         if (empty($result->_entity->get('field_jurisdiction')->getValue())) { // national or international, no location
-          if ((!empty($jurisdiction) && $jurisdiction->get('name')->getValue()[0]['value'] != 'New Zealand') ||
-            $result->_entity->get('field_international')->getValue()[0]['value'] == '1') {
+          if (!empty($jurisdiction) && $jurisdiction->get('name')->getValue()[0]['value'] != 'New Zealand') {
+            $r = true;
+          }
+          if ($result->_entity->get('field_international')->getValue()[0]['value'] == '1') {
             $r = true;
           }
         } else {
