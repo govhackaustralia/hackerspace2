@@ -16,14 +16,14 @@ class HackerspaceController extends ControllerBase
       ->condition('field_email', \Drupal::currentUser()->getEmail())
       ->execute();
     foreach (\Drupal::entityManager()->getStorage('paragraph')->loadMultiple($result) as $tm) {
-      $projects[] = $tm->getParentEntity();
+      $projects[$tm->getParentEntity()->id()] = $tm->getParentEntity();
     }
     $result = \Drupal::entityQuery('node')
       ->condition('type', 'project')
       ->condition('uid', \Drupal::currentUser()->id())
       ->execute();
     foreach (\Drupal::entityManager()->getStorage('node')->loadMultiple($result) as $node) {
-      $projects[] = $node;
+      $projects[$node->id()] = $node;
     }
     $markup = '<a class="btn btn-info" href="/node/add/project">Create new project...</a><ul>';
     foreach($projects as $project) {
