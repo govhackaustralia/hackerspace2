@@ -6,9 +6,14 @@ dependencies:
     - field.storage.taxonomy_term.field_jurisdiction
     - taxonomy.vocabulary.dataset
   module:
+    - csv_serialization
     - link
+    - rest
+    - serialization
     - taxonomy
+    - text
     - user
+    - views_data_export
 id: datasets
 label: Datasets
 module: views
@@ -36,7 +41,7 @@ display:
         options:
           disable_sql_rewrite: false
           distinct: false
-          replica: false
+          replica: true
           query_comment: ''
           query_tags: {  }
       exposed_form:
@@ -56,6 +61,51 @@ display:
           offset: 0
       style:
         type: table
+        options:
+          grouping:
+            -
+              field: field_jurisdiction
+              rendered: true
+              rendered_strip: false
+          row_class: ''
+          default_row_class: true
+          override: true
+          sticky: false
+          caption: ''
+          summary: ''
+          description: ''
+          columns:
+            name: name
+            description__value: description__value
+            field_jurisdiction: field_jurisdiction
+            field_dataset_url: field_dataset_url
+          info:
+            name:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            description__value:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_jurisdiction:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_dataset_url:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+          default: '-1'
+          empty_table: false
       row:
         type: fields
       fields:
@@ -107,10 +157,10 @@ display:
           separator: ', '
           field_api_classes: false
           convert_spaces: false
-        field_description:
-          id: field_description
-          table: taxonomy_term__field_description
-          field: field_description
+        description__value:
+          id: description__value
+          table: taxonomy_term_field_data
+          field: description__value
           relationship: none
           group_type: group
           admin_label: ''
@@ -168,6 +218,8 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+          entity_type: taxonomy_term
+          entity_field: description
           plugin_id: field
         field_jurisdiction:
           id: field_jurisdiction
@@ -176,7 +228,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: State
+          label: Region
           exclude: false
           alter:
             alter_text: false
@@ -213,7 +265,7 @@ display:
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
-          empty: ''
+          empty: National
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
@@ -309,9 +361,40 @@ display:
           entity_type: taxonomy_term
           entity_field: vid
           plugin_id: bundle
-      sorts: {  }
+      sorts:
+        name:
+          id: name
+          table: taxonomy_term_field_data
+          field: name
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: false
+          expose:
+            label: ''
+          entity_type: taxonomy_term
+          entity_field: name
+          plugin_id: standard
+        field_jurisdiction_target_id:
+          id: field_jurisdiction_target_id
+          table: taxonomy_term__field_jurisdiction
+          field: field_jurisdiction_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: false
+          expose:
+            label: ''
+          plugin_id: standard
       title: Datasets
-      header: {  }
+      header:
+        area:
+          id: area
+          table: views
+          field: area
+          plugin_id: text
       footer: {  }
       empty: {  }
       relationships: {  }
@@ -326,6 +409,363 @@ display:
       tags:
         - 'config:field.storage.taxonomy_term.field_dataset_url'
         - 'config:field.storage.taxonomy_term.field_jurisdiction'
+  data_export_1:
+    display_plugin: data_export
+    id: data_export_1
+    display_title: 'Data export'
+    position: 1
+    display_options:
+      display_extenders: {  }
+      path: datasets.csv
+      style:
+        type: data_export
+        options:
+          formats:
+            csv: csv
+          csv_settings:
+            delimiter: ','
+            enclosure: '"'
+            escape_char: \
+            strip_tags: true
+            trim: true
+            encoding: utf8
+          xls_settings:
+            xls_format: Excel2007
+            metadata:
+              creator: ''
+              last_modified_by: ''
+              title: ''
+              description: ''
+              subject: ''
+              keywords: ''
+              category: ''
+              manager: ''
+              company: ''
+      filename: ''
+      pager:
+        type: none
+        options:
+          offset: 0
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - request_format
+        - user.permissions
+      tags:
+        - 'config:field.storage.taxonomy_term.field_dataset_url'
+        - 'config:field.storage.taxonomy_term.field_jurisdiction'
+  data_export_2:
+    display_plugin: data_export
+    id: data_export_2
+    display_title: 'Data export'
+    position: 1
+    display_options:
+      display_extenders: {  }
+      path: datasets.json
+      style:
+        type: data_export
+        options:
+          formats:
+            json: json
+          csv_settings:
+            delimiter: ','
+            enclosure: '"'
+            escape_char: \
+            strip_tags: true
+            trim: true
+            encoding: utf8
+          xls_settings:
+            xls_format: Excel2007
+            metadata:
+              creator: ''
+              last_modified_by: ''
+              title: ''
+              description: ''
+              subject: ''
+              keywords: ''
+              category: ''
+              manager: ''
+              company: ''
+      filename: ''
+      fields:
+        name:
+          id: name
+          table: taxonomy_term_field_data
+          field: name
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: Name
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: false
+            ellipsis: false
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          convert_spaces: false
+          entity_type: taxonomy_term
+          entity_field: name
+          plugin_id: term_name
+        description__value:
+          id: description__value
+          table: taxonomy_term_field_data
+          field: description__value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: Description
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: text_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: taxonomy_term
+          entity_field: description
+          plugin_id: field
+        field_jurisdiction:
+          id: field_jurisdiction
+          table: taxonomy_term__field_jurisdiction
+          field: field_jurisdiction
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: State
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: false
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        field_dataset_url:
+          id: field_dataset_url
+          table: taxonomy_term__field_dataset_url
+          field: field_dataset_url
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Dataset URL'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: uri
+          type: link
+          settings:
+            trim_length: 80
+            url_only: true
+            url_plain: true
+            rel: '0'
+            target: '0'
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+      defaults:
+        fields: false
+      pager:
+        type: none
+        options:
+          offset: 0
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - request_format
+        - user.permissions
+      tags:
+        - 'config:field.storage.taxonomy_term.field_dataset_url'
+        - 'config:field.storage.taxonomy_term.field_jurisdiction'
   page_1:
     display_plugin: page
     id: page_1
@@ -334,6 +774,22 @@ display:
     display_options:
       display_extenders: {  }
       path: datasets
+      header:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: false
+          tokenize: false
+          content:
+            value: '<small class="pull-right">also available in <a href="/datasets.csv">csv</a> and <a href="/datasets.json">json</a></small>'
+            format: restricted_html
+          plugin_id: text
+      defaults:
+        header: false
     cache_metadata:
       max-age: 0
       contexts:

@@ -9,7 +9,7 @@ id: node.project.field_jurisdiction
 field_name: field_jurisdiction
 entity_type: node
 bundle: project
-label: State/Territory/Country
+label: 'State, Territory or Country'
 description: ''
 required: true
 translatable: false

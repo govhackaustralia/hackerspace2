@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_more_description
+    - taxonomy.vocabulary.prize
+  module:
+    - text
+id: taxonomy_term.prize.field_more_description
+field_name: field_more_description
+entity_type: taxonomy_term
+bundle: prize
+label: 'More Description'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

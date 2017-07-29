@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_mentors
+    - taxonomy.vocabulary.dataset
+  module:
+    - text
+id: taxonomy_term.dataset.field_mentors
+field_name: field_mentors
+entity_type: taxonomy_term
+bundle: dataset
+label: Mentors
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

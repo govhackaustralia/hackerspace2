@@ -4,6 +4,7 @@ dependencies:
   config:
     - field.storage.taxonomy_term.field_code
     - field.storage.taxonomy_term.field_eligibility_criteria
+    - field.storage.taxonomy_term.field_international
     - field.storage.taxonomy_term.field_jurisdiction
     - field.storage.taxonomy_term.field_prize_sponsor
     - taxonomy.vocabulary.prize
@@ -56,12 +57,68 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       pager:
-        type: some
+        type: none
         options:
-          items_per_page: 999
           offset: 0
       style:
         type: table
+        options:
+          grouping:
+            -
+              field: field_jurisdiction
+              rendered: true
+              rendered_strip: false
+          row_class: ''
+          default_row_class: true
+          override: true
+          sticky: false
+          caption: ''
+          summary: ''
+          description: ''
+          columns:
+            name: name
+            field_prize_sponsor: field_prize_sponsor
+            field_international: field_jurisdiction
+            field_jurisdiction: field_jurisdiction
+            field_code: field_code
+          info:
+            name:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_prize_sponsor:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_international:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_jurisdiction:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_code:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+          default: '-1'
+          empty_table: false
       row:
         type: fields
       fields:
@@ -377,6 +434,7 @@ display:
           entity_type: taxonomy_term
           entity_field: vid
           plugin_id: bundle
+          group: 1
       sorts:
         field_jurisdiction_target_id:
           id: field_jurisdiction_target_id
@@ -390,6 +448,20 @@ display:
           expose:
             label: ''
           plugin_id: standard
+        name:
+          id: name
+          table: taxonomy_term_field_data
+          field: name
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: false
+          expose:
+            label: ''
+          entity_type: taxonomy_term
+          entity_field: name
+          plugin_id: standard
       title: Awards
       header: {  }
       footer: {  }
@@ -397,6 +469,10 @@ display:
       relationships: {  }
       arguments: {  }
       display_extenders: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
     cache_metadata:
       max-age: 0
       contexts:
@@ -1227,68 +1303,6 @@ display:
           separator: ', '
           field_api_classes: false
           convert_spaces: false
-        field_eligibility_criteria:
-          id: field_eligibility_criteria
-          table: taxonomy_term__field_eligibility_criteria
-          field: field_eligibility_criteria
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: 'Eligibility Criteria'
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: text_default
-          settings: {  }
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
         field_prize_sponsor:
           id: field_prize_sponsor
           table: taxonomy_term__field_prize_sponsor
@@ -1351,14 +1365,14 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
-        field_jurisdiction:
-          id: field_jurisdiction
-          table: taxonomy_term__field_jurisdiction
-          field: field_jurisdiction
+        field_international:
+          id: field_international
+          table: taxonomy_term__field_international
+          field: field_international
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Award Region (State/Territory/National/International)'
+          label: ''
           exclude: false
           alter:
             alter_text: false
@@ -1391,14 +1405,79 @@ display:
           element_class: ''
           element_label_type: ''
           element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: false
+          click_sort_column: value
+          type: boolean
+          settings:
+            format: custom
+            format_custom_true: International
+            format_custom_false: ''
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        field_jurisdiction:
+          id: field_jurisdiction
+          table: taxonomy_term__field_jurisdiction
+          field: field_jurisdiction
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Award Region (State/Territory/National/International)'
+          exclude: false
+          alter:
+            alter_text: true
+            text: '{{ field_international }}{{ field_jurisdiction }}'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
           element_label_colon: true
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
-          empty: National/International
+          empty: ''
           hide_empty: false
           empty_zero: false
-          hide_alter_empty: true
+          hide_alter_empty: false
           click_sort_column: target_id
           type: entity_reference_label
           settings:
@@ -1502,6 +1581,6 @@ display:
         - user.permissions
       tags:
         - 'config:field.storage.taxonomy_term.field_code'
-        - 'config:field.storage.taxonomy_term.field_eligibility_criteria'
+        - 'config:field.storage.taxonomy_term.field_international'
         - 'config:field.storage.taxonomy_term.field_jurisdiction'
         - 'config:field.storage.taxonomy_term.field_prize_sponsor'

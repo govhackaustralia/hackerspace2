@@ -10,7 +10,7 @@ id: node.project.field_source_file
 field_name: field_source_file
 entity_type: node
 bundle: project
-label: 'Source Code/Material File'
+label: 'Source code and Material file'
 description: ''
 required: false
 translatable: false

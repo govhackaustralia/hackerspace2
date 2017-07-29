@@ -4,6 +4,7 @@ dependencies:
   config:
     - field.field.taxonomy_term.dataset.field_dataset_url
     - field.field.taxonomy_term.dataset.field_jurisdiction
+    - field.field.taxonomy_term.dataset.field_mentors
     - taxonomy.vocabulary.dataset
   module:
     - field_group
@@ -40,7 +41,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_dataset_url:
-    weight: 2
+    weight: 1
     label: above
     settings:
       trim_length: 80
@@ -52,11 +53,12 @@ content:
     type: link
     region: content
   field_jurisdiction:
-    weight: 3
+    weight: 2
     label: above
     settings:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
     region: content
-hidden: {  }
+hidden:
+  field_mentors: true

@@ -11,7 +11,7 @@ id: node.project.field_team_members
 field_name: field_team_members
 entity_type: node
 bundle: project
-label: 'Team Members'
+label: 'Team members'
 description: ''
 required: false
 translatable: false
@@ -26,4 +26,7 @@ settings:
       team_member:
         enabled: true
         weight: 2
+      dataset_used:
+        weight: 3
+        enabled: false
 field_type: entity_reference_revisions
