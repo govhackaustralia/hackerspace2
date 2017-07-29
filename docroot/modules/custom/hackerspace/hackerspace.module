@@ -100,6 +100,7 @@ function hackerspace_views_pre_view($view, $display_id, array &$args)
       $params = $url_object->getRouteParameters();
       $entity_type = key($params);
       if ($entity_type) {
+        if ($entity_type == 'node_preview') $entity_type = 'node';
         $entity = \Drupal::entityTypeManager()->getStorage($entity_type)->load($params[$entity_type]);
 
         $token_service = \Drupal::token();

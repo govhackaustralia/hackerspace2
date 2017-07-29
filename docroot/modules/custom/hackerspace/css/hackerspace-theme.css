@@ -30,3 +30,6 @@
 #node-project-edit-form .paragraph-type-title {
   font-size: 0;
 }
+#edit-preview {
+  display:none;
+}
