@@ -44,7 +44,7 @@ class HackerspaceController extends ControllerBase
       $tms[] = [
         "team_id" => $tm->parent_id->value,
         "project_name" => $tm->getParentEntity()->title->value,
-        "team_name" => $tm->getParentEntity()->title->value,
+        "team_name" => $tm->getParentEntity()->field_team_name->value,
         "name" => $tm->field_name[0]->value,
         "email" => $tm->field_email[0]->value,
         "telephone" => $tm->field_telephone[0]->value,
