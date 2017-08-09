@@ -5,6 +5,13 @@ hackerspace.team_export:
   requirements:
     _role: 'administrator'
 
+hackerspace.project_export:
+  path: '/project_export'
+  defaults:
+    _controller: '\Drupal\hackerspace\Controller\HackerspaceController::project_export'
+  requirements:
+    _role: 'administrator'
+
 hackerspace.my_projects:
   path: '/my_projects'
   defaults:
