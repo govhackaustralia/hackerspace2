@@ -21,10 +21,11 @@ if (file_exists('/var/www/site-php')) {
 $settings['hash_salt'] = 'CHANGE_THIS';
 $databases['default']['default'] = array(
   'database' => 'hackerspace2',
-  'username' => 'root',
+  'username' => 'drupaluser',
   'prefix' => '',
   'host' => 'localhost',
   'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
   'driver' => 'mysql',
+  'port' => '33067'
 );
 $config_directories['sync'] = '/tmp';
