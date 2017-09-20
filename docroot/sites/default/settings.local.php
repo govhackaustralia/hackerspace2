@@ -1,31 +1,24 @@
 <?php
-if (isset($_SERVER['RDS_HOSTNAME'])) {
-  $settings['memcache']['servers'] = ['127.0.0.1:11211' => 'default'];
-  $settings['cache']['bins']['render'] = 'cache.backend.memcache';
-  $settings['cache']['bins']['dynamic_page_cache'] = 'cache.backend.memcache';
 
-  $databases['default']['default'] = array(
-    'database' => $_SERVER['RDS_DB_NAME'],
-    'username' => $_SERVER['RDS_USERNAME'],
-    'password' => $_SERVER['RDS_PASSWORD'],
-    'prefix' => '',
-    'host' => $_SERVER['RDS_HOSTNAME'],
-    'port' => $_SERVER['RDS_PORT'],
-    'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
-    'driver' => 'mysql',
-  );
-}
-if (file_exists('/var/www/site-php')) {
-  require '/var/www/site-php/ausgovhack/ausgovhack-settings.inc';
-}
-$settings['hash_salt'] = 'CHANGE_THIS';
+//D6 DB config
+$db_url = 'mysqli://drupaluser@127.0.0.1:33067/ausgovhack_prod';
+
+//D7 DB config
+if (!isset($databases))
+  $databases = array();
+
 $databases['default']['default'] = array(
-  'database' => 'hackerspace2',
-  'username' => 'drupaluser',
-  'prefix' => '',
-  'host' => 'localhost',
-  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
   'driver' => 'mysql',
-  'port' => '33067'
-);
-$config_directories['sync'] = '/tmp';
+  'database' => 'ausgovhack_prod',
+  'username' => 'drupaluser',
+  'password' => '',
+  'host' => '127.0.0.1',
+  'port' => 33067 );
+
+if (empty($config_directories['active']))
+  $config_directories['active'] = "sites/default/files/config_2ba73f0cde85ba547e2fe9b1d0f6f194552f061d/active";
+if (empty($config_directories['staging']))
+  $config_directories['staging'] = "sites/default/files/config_2ba73f0cde85ba547e2fe9b1d0f6f194552f061d/staging";
+
+if (empty($settings['hash_salt']))
+  $settings['hash_salt'] = 'ZGVmYXVsdAAAAAEAAAAAAAAAAADAgmoBAAAAAA==';
