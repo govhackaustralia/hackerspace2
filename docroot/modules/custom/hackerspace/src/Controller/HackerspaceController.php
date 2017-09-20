@@ -35,6 +35,10 @@ class HackerspaceController extends ControllerBase
   }
   public function team_export()
   {
+    $jurisdictions = [];
+    foreach(\Drupal::entityManager()->getStorage('taxonomy_term')->loadTree('jurisdiction') as $term) {
+      $jurisdictions[$term->tid] = $term->name;
+    }
     $response = new Response();
     $query = \Drupal::entityQuery('paragraph');
     $query->condition('type', 'team_member');
@@ -48,7 +52,8 @@ class HackerspaceController extends ControllerBase
         "name" => $tm->field_name[0]->value,
         "email" => $tm->field_email[0]->value,
         "telephone" => $tm->field_telephone[0]->value,
-        "captain" => ($tm->field_captain[0]->value == 1 ? "Yes" : "No")
+        "captain" => ($tm->field_captain[0]->value == 1 ? "Yes" : "No"),
+        "jurisdiction" => $jurisdictions[$tm->getParentEntity()->field_jurisdiction[0]->target_id],
       ];
     }
     $response->setContent(\Drupal::service('serializer')->serialize($tms, 'csv'));
